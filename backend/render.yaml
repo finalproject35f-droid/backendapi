@@ -1,0 +1,39 @@
+services:
+  - type: web
+    name: epicare-api
+    runtime: docker
+    plan: free
+    dockerfilePath: ./src/EpiCare.Api/Dockerfile
+    dockerContext: .
+    healthCheckPath: /api/health
+    envVars:
+      - key: ASPNETCORE_ENVIRONMENT
+        value: Production
+      - key: AiModel__BaseUrl
+        value: https://seizeit2-api-production.up.railway.app
+      - key: AiModel__PredictPath
+        value: /predict
+      - key: AiModel__WindowSize
+        value: 240
+      - key: AiModel__ModelWindowCount
+        value: 8
+      - key: AiModel__ModelSamplesPerWindow
+        value: 3840
+      - key: AiModel__ModelEegChannels
+        value: 2
+      - key: AiModel__ModelEcgChannels
+        value: 1
+      - key: AiModel__ModelEmgChannels
+        value: 1
+      - key: AiModel__HighRiskThreshold
+        value: 0.7
+      - key: AiModel__TimeoutSeconds
+        value: 60
+      - key: Decision__DemoMode
+        value: false
+      - key: Decision__AccGravityBaseline
+        value: 980
+      - key: Decision__AccVerticalScale
+        value: 50
+      - key: Decision__AccMovementThreshold
+        value: 2.5
