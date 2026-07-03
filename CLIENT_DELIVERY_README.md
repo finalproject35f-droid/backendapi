@@ -24,4 +24,17 @@ cd backend
 dotnet build EpiCare.Backend.sln
 ```
 
+## Railway deployment note
+
+If Railway shows `railpack process exited with an error`, switch the service builder to Dockerfile:
+
+```text
+Builder: Dockerfile
+Dockerfile Path: Dockerfile
+Build Command: empty
+Start Command: empty
+```
+
+Do not use Railpack for this .NET backend service. The app binds to Railway's `PORT` variable automatically.
+
 The ACC calibration values currently target the Proteus simulation where resting Z is approximately 980. Recalibrate them before using a physical accelerometer with different units.

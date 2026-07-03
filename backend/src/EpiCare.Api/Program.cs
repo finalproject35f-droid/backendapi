@@ -6,6 +6,9 @@ using Microsoft.AspNetCore.SignalR;
 
 var builder = WebApplication.CreateBuilder(args);
 
+var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
+builder.WebHost.UseUrls($"http://0.0.0.0:{port}");
+
 builder.Services.Configure<AiModelOptions>(builder.Configuration.GetSection("AiModel"));
 builder.Services.Configure<DecisionOptions>(builder.Configuration.GetSection("Decision"));
 builder.Services.AddSingleton<SignalPreprocessor>();

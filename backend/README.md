@@ -169,6 +169,19 @@ After deploy, give Flutter this base URL:
 https://YOUR-RENDER-SERVICE.onrender.com
 ```
 
+## Deploy to Railway
+
+Use the Dockerfile builder, not Railpack. If Railway reports `railpack process exited with an error`, open the Railway service settings and set:
+
+```text
+Builder: Dockerfile
+Dockerfile Path: Dockerfile
+Build Command: empty
+Start Command: empty
+```
+
+The backend automatically binds to Railway's `PORT` variable.
+
 ## Notes
 
 - Current storage is in-memory for fast demo deployment. It resets when the free server sleeps/restarts.
